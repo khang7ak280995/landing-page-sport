@@ -12,7 +12,7 @@ class BaseModel extends Model
 {
     use HasFactory;
 
-    public static function storeOrUpdate(array $params = []): ?BaseBaseNotSoftDeleteModel
+    public static function storeOrUpdate(array $params = [])
     {
         if (!empty($params['id'])) {
             $model = static::getDetail($params['id']);
