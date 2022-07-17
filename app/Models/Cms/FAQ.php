@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Models\Settings;
+namespace App\Models\Cms;
 
 use App\Models\Base\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class SlideHomeModel extends BaseModel
+class FAQ extends BaseModel
 {
     use HasFactory;
-    protected $table = 'slide_home';
+
+    protected $table = 'faq';
     protected $fillable = [
         'title',
-        'description',
-        'link_image',
+        'content',
         'is_show'
     ];
 }
