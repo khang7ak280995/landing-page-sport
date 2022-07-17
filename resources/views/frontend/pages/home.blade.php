@@ -162,18 +162,13 @@
                         Suas iracundia his ea. Ex nec veniam singulis. No errem ridens eam, nam an veniam equidem nam an veniam equidem. No errem ridens eam, nam an veniam equidem lorem. Eu legendos definitiones vim, ea menandri voluptatum convenire quo ad lorem ipsum dolor.
                     </p>
                     <ul class="ul-list">
+                        @forelse($endows as $item)
                         <li>
-                            <i class="fa fa-check"></i> Ưu đãi & chiết khấu cao
+                            <i class="fa fa-check"></i> {{$item->content}}
                         </li>
-                        <li>
-                            <i class="fa fa-check"></i> Đại lý có thể là cá nhân, tổ chức hoặc doanh nghiệp
-                        </li>
-                        <li>
-                            <i class="fa fa-check"></i> Hình thức đăng kí đơn giản
-                        </li>
-                        <li>
-                            <i class="fa fa-check"></i> Được phép phân phối tất cả sản phẩm của VGS Sport
-                        </li>
+                        @empty
+                            <p>Không có uu dai</p>
+                        @endforelse
                     </ul>
                 </div>
                 <div class="col-md-6">
@@ -580,28 +575,29 @@
             <div class="right-inner">
                 <h3>Đăng ký mua bảo hiểm HIO</h3>
                 <!-- comment-form -->
-                <form class="wrapper100percent" method="post" action="sendEmail.php">
+                <form class="wrapper100percent" method="post" id="form-register-insurance">
+                    @csrf
                     <div id="main">
 
                         <div>
                             <p><input type="text" placeholder="Tên" name="name" id="name"/></p>
                         </div>
                         <div>
-                            <p> <input type="text" placeholder="Mã VGA" name="email" id="email" /></p>
+                            <p> <input type="text" placeholder="Mã VGA" name="vga_code" id="vga_code" /></p>
                         </div>
                         <div>
-                            <p> <input type="text" placeholder="Số điện thoại" name="subject" id="subject" /></p>
+                            <p> <input type="text" placeholder="Số điện thoại" name="phone" id="phone" /></p>
                         </div>
                         <div>
                             <select id="form_service" name="service" placeholder="Service">
                                 <option value="0"> Gói sản phẩm quan tâm</option>
-                                <option value="1"> Gói D</option>
-                                <option value="2"> Gói M</option>
-                                <option value="3"> Gói Y</option>
+                                <option value="D"> Gói D</option>
+                                <option value="M"> Gói M</option>
+                                <option value="Y"> Gói Y</option>
                             </select>
                         </div>
                         <p>
-                            <textarea placeholder="your message" name="comments" id="comments" rows="5" cols="5"></textarea>
+                            <textarea placeholder="your message" name="notes" id="notes" rows="5" cols="5"></textarea>
                         </p>
                         <div class="buttoncontact">
                             <p>
@@ -627,9 +623,7 @@
                 <div class="col-md-8">
                     <div class="map-overlay" onClick="style.pointerEvents='none'"> </div>
                     <div class="map">
-                        <iframe
-                                src="https://maps.google.com/maps?sll=42.3232039,-71.1423464&amp;sspn=0.0974788,0.1757965&amp;q=new+yourk+near+Brookline,+MA&amp;ie=UTF8&amp;hq=new+york&amp;hnear=Brookline,+Norfolk+County,+Massachusetts&amp;t=m&amp;ll=42.343748,-71.142702&amp;spn=0.081827,0.222714&amp;output=embed">
-                        </iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6146558536643!2d105.80327821473176!3d21.048099185987788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab229fcbe2ab%3A0xe66c43cd49fe57c3!2zMjAgxJAuIFbDtSBDaMOtIEPDtG5nLCBYdcOibiBMYSwgVMOieSBI4buTLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1658054169897!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -640,13 +634,13 @@
                         </p>
                         <ul class="ul-list">
                             <li>
-                                <i class="fa fa-phone"></i> 033 25 11111
+                                <i class="fa fa-phone"></i> {{ isset($contact['phone']) ? $contact['phone'] : "" }}
                             </li>
                             <li>
-                                <i class="fa fa-envelope"></i> contact@vgssport.com
+                                <i class="fa fa-envelope"></i>{{ isset($contact['email']) ? $contact['email'] : "" }}
                             </li>
                             <li>
-                                <i class="fa fa-map-marker"></i> Số 20 Võ Chí Công, Quận Cầu Giấy, Tp. Hà Nội, Việt Nam
+                                <i class="fa fa-map-marker"></i> {{ isset($contact['address']) ? $contact['address'] : "" }}
                             </li>
                         </ul>
                     </div>
@@ -658,3 +652,40 @@
     </section>
     <!-- Map end -->
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+
+        $('#form-register-insurance').on('submit',function(e){
+            e.preventDefault();
+
+            let name = $('#name').val();
+            let vga_code = $('#vga_code').val();
+            let phone = $('#phone').val();
+            let message = $('#notes').val();
+            let package_buy = $( "#form_service" ).val();
+
+            $.ajax({
+                url: "{{url('/api/v1/customer-register-insurance')}}",
+                type:"POST",
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                    name:name,
+                    vga_code:vga_code,
+                    phone:phone,
+                    note:message,
+                    package_buy:package_buy,
+                },
+                success:function(response){
+                    $('#successMsg').show();
+                    console.log(response);
+                },
+                error: function(response) {
+                    $('#nameErrorMsg').text(response.responseJSON.errors.name);
+                    $('#emailErrorMsg').text(response.responseJSON.errors.email);
+                    $('#mobileErrorMsg').text(response.responseJSON.errors.mobile);
+                    $('#messageErrorMsg').text(response.responseJSON.errors.message);
+                },
+            });
+        });
+    </script>
+@endpush

@@ -153,5 +153,8 @@
 {{--<script src="{{asset('frontend/js/chart.js')}}"></script>--}}
 {{--<script src="{{asset('frontend/js/chart_init.js')}}"></script>--}}
 <script src="{{asset('frontend/js/scripts.js')}}"></script>
+
+@stack('scripts')
+
 </body>
 </html>

@@ -4,11 +4,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <a href=""><i class="fa fa-twitter"></i></a>
-                        <a href=""><i class="fa fa-facebook"></i></a>
-                        <a href=""><i class="fa fa-linkedin"></i></a>
-                        <a href="skype:...?call"><i class="fa fa-phone"> <span>033 25 11111</span></i></a>
-                        <a href="mailto:someone@yoursite.com"><i class="fa fa-envelope last"> <span> contact@vgssport.com</span></i></a>
+                        <a href="{{isset($contact['twitter']) ? $contact['twitter'] : ""}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="{{isset($contact['facebook']) ? $contact['facebook'] : ""}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="{{isset($contact['linkedin']) ? $contact['linkedin'] : ""}}" target="_blank"><i class="fa fa-linkedin" ></i></a>
+                        <a href="skype:...?call"><i class="fa fa-phone"> <span>{{ isset($contact['phone']) ? $contact['phone'] : "" }}</span></i></a>
+                        <a href="mailto:someone@yoursite.com"><i class="fa fa-envelope last"> <span>{{ isset($contact['email']) ? $contact['email'] : "" }}</span></i></a>
                     </div>
                 </div>
             </div>
