@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-sm-4 text-right">
                     <ol class="breadcrumb">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li class="active">Golfer trúng HIO</li>
                     </ol>
                 </div>
@@ -22,42 +22,19 @@
         <div class="container">
             <div class="row blogpost">
                 <div class="masonrycontainer2" id="masonrycontainer2">
-                    <article class="col-sm-4 masonrys text-center">
-                        <img src="{{asset('frontend/images/img2.jpg')}}" alt=""/>
-                        <h4>john doe</h4>
-                        <span>Golfer trúng giải hio</span>
-                        <br>
-                        <p>420000000 yarn| Gậy 8 sắt| Long Biên | HDC:5.9
-                        </p>
+                    @foreach($listGolfer as $golfer)
+                        <article class="col-sm-4 masonrys text-center">
+                            <a href="{{ route(\App\Helpers\Constant::LIST_GOLFER_WIN_HIO . '.detail', $golfer->slug) }}">
+                                <img src="{{ asset($golfer->link_image) }}" alt=""/>
+                            </a>
+                            <h4>{{ $golfer->name }}</h4>
+                            <span>Golfer trúng giải hio</span>
+                            <br>
+                            <p>{{ number_format($golfer->amount) }} VNĐ | {{ $golfer->yard }} yard | {{ $golfer->stick }} | {{ $golfer->facility }} | HDC:{{ $golfer->hdc }}
+                            </p>
 
-                    </article>
-                    <article class="col-sm-4 masonrys text-center">
-                        <img src="{{asset('frontend/images/img2.jpg')}}" alt=""/>
-                        <h4>john doe</h4>
-                        <span>Golfer trúng giải hio</span>
-                        <br>
-                        <p>420000000 yarn| Gậy 8 sắt| Long Biên | HDC:5.9
-                        </p>
-
-                    </article>
-                    <article class="col-sm-4 masonrys text-center">
-                        <img src="{{asset('frontend/images/img2.jpg')}}" alt=""/>
-                        <h4>john doe</h4>
-                        <span>Golfer trúng giải hio</span>
-                        <br>
-                        <p>420000000 yarn| Gậy 8 sắt| Long Biên | HDC:5.9
-                        </p>
-
-                    </article>
-                    <article class="col-sm-4 masonrys text-center">
-                        <img src="{{asset('frontend/images/img2.jpg')}}" alt=""/>
-                        <h4>john doe</h4>
-                        <span>Golfer trúng giải hio</span>
-                        <br>
-                        <p>420000000 yarn| Gậy 8 sắt| Long Biên | HDC:5.9
-                        </p>
-
-                    </article>
+                        </article>
+                    @endforeach
                 </div>
                 <!-- masonrycontainer end -->
             </div>
@@ -69,24 +46,8 @@
     <nav class="wrapper100percent">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-sm-12 text-center">
+                    {{ $listGolfer->links() }}
                 </div>
             </div>
         </div>

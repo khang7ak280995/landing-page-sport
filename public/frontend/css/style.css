@@ -1116,6 +1116,12 @@ html[xmlns] .flexslider .slides {
 .services .color6 {
   background: #0a406d;
 }
+.services .color7 {
+  background: #06385f;
+}
+.services .color8 {
+  background: #03243d;
+}
 .services ul {
   display: block;
   width: 100%;
@@ -1747,7 +1753,7 @@ i.teamicon:hover {
 #main input[type="text"] {
   width: 100%;
   max-width: 500px;
-  color: #000000!important;
+  color: #000000 !important;
   margin-top: 0;
   height: 50px;
   padding: 0 27px;

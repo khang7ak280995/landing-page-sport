@@ -14,10 +14,15 @@ class PromotionController extends Controller
         $promotions =  PromotionModel::query()->paginate(10);
         return view('frontend.pages.promotion.list-promotion',compact('promotions'));
     }
-    public function view($id)
+    public function view($slug = null)
     {
         $promotions =  PromotionModel::query()->where('status','=',1)->orderBy('created_at','DESC')->take(5)->get();
-        $promotion = PromotionModel::query()->findOrFail($id);
-        return view('frontend.pages.promotion.detail-promotion',compact('promotion','promotions'));
+        $listInsurancePackage = PromotionModel::getList(['*'], [], ['column' => 'status', 'value' => 1]);
+        if ($slug != null) {
+            $promotion = PromotionModel::getFirstByWhere('slug', '=', $slug);
+            return view('frontend.pages.promotion.detail-promotion',compact('promotion','promotions'));
+        } else {
+            return view('frontend.pages.promotion.detail-promotion', compact('listInsurancePackage'));
+        }
     }
 }

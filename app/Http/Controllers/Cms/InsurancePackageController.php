@@ -18,12 +18,13 @@ class InsurancePackageController extends Controller
 {
     use ResponseTrait, HasAjaxRequest, BaseController;
 
-    protected $slug, $model;
+    protected $slug, $model, $tableName;
 
     public function __construct(InsurancePackage $model)
     {
         $this->slug = Constant::INSURANCE_PACKAGE;
         $this->model = $model;
+        $this->tableName = 'insurance_package';
     }
 
     public function getDataTable(Request $request)
@@ -61,7 +62,8 @@ class InsurancePackageController extends Controller
     public function store(InsurancePackageRequest $request)
     {
         $request->validate([
-            'image' => 'required|max:2048'
+            'image' => 'required|max:2048',
+            'icon' => 'required|max:2048'
         ]);
 
         $this->helperStore($request);
@@ -87,5 +89,10 @@ class InsurancePackageController extends Controller
         ];
         $query = $this->model::storeOrUpdate($params);
         return $this->ajaxSuccessResponse($query, 'Change Success!');
+    }
+
+    public function detailPublic(Request $request, $slug)
+    {
+//        $insurancePackage = $this->model::getFirstByWhere('');
     }
 }

@@ -21,6 +21,7 @@ class ListGolferWinHIO extends BaseModel
         'hdc',
         'is_show',
         'link_image',
-        'description'
+        'description',
+        'slug'
     ];
 }

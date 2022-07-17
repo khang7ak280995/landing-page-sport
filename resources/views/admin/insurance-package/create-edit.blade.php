@@ -126,6 +126,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="icon" class="col-sm-2 col-form-label form-label">Icon</label>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input class="form-control icon" type="file"
+                                                   {{ !isset($query) ? 'required' : '' }}
+                                                   name="icon">
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <img id="imageUser-Edit" class="previewImgIcon"
+                                                     src="{{ isset($query) ? asset($query->icon) : '' }}"
+                                                     style="width: 100%">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-12 text-center">
                                 <button class="btn btn-primary" type="submit">Save</button>

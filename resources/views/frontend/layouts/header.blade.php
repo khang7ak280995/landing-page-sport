@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="responsive-wrapper">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="{{route('home')}}">
                                 <img src="{{asset('frontend/images/logo.svg')}}">
                             </a>
                             <div class="navbar-header">
@@ -34,11 +34,11 @@
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                             <div class="cl-effect-12">
                                 <ul class="nav navbar-nav pull-right">
-                                    <li><a href="">Trang chủ</a></li>
-                                    <li><a href="">Gói sản phẩm</a></li>
-                                    <li><a href="">Khuyến mại</a></li>
-                                    <li><a href="">Con số ấn tượng</a></li>
-                                    <li><a href="">Golfer trúng HIO</a></li>
+                                    <li><a href="{{ route('home') }}">Trang chủ</a></li>
+                                    <li><a href="{{ route('insurance-package.detail') }}">Gói sản phẩm</a></li>
+                                    <li><a href="{{route('promotions')}}">Khuyến mại</a></li>
+{{--                                    <li><a href="">Con số ấn tượng</a></li>--}}
+                                    <li><a href="{{ route(\App\Helpers\Constant::LIST_GOLFER_WIN_HIO . '.home') }}">Golfer trúng HIO</a></li>
                                     <li><a href="">Đăng ký đại lý</a></li>
                                     <li><a href="">Liên hệ</a></li>
                                 </ul>

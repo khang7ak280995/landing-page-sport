@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [\App\Http\Controllers\Webpage\HomeController::class, 'index'])->name('index');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'homePage'])->name('home');
 Route::get('/products', function () {
     return view('frontend.pages.product');
 });
@@ -23,10 +24,18 @@ Route::get('/detail-hio', function () {
     return view('frontend.pages.hio.detail-hio');
 });
 Route::get('/promotions', [\App\Http\Controllers\Webpage\PromotionController::class, 'index'])->name('promotions');
-Route::get('/detail-promotion/{id}', [\App\Http\Controllers\Webpage\PromotionController::class, 'view'])->name('detail-promotion');
+Route::get('/detail-promotion/{slug?}', [\App\Http\Controllers\Webpage\PromotionController::class, 'view'])->name('detail-promotion');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('insurance-package/{slug?}', [\App\Http\Controllers\HomeController::class, 'insurancePackageDetail'])->name('insurance-package.detail');
+Route::group([
+    'prefix' => \App\Helpers\Constant::LIST_GOLFER_WIN_HIO,
+    'as' => \App\Helpers\Constant::LIST_GOLFER_WIN_HIO . '.'
+], function () {
+    Route::get('', [\App\Http\Controllers\HomeController::class, 'listGolferWinHIO'])->name('home');
+    Route::get('detail/{image}', [\App\Http\Controllers\HomeController::class, 'golferWinHIODetail'])->name('detail');
+});
+require __DIR__ . '/auth.php';

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/colorbox.css')}}">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('frontend/images/favicon.svg')}}" />
+    @yield('style')
 </head>
 {{--<body data-spy="scroll" class="loading">--}}
 {{--<div id="menu1"></div>--}}

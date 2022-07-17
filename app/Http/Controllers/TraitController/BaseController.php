@@ -4,6 +4,7 @@ namespace App\Http\Controllers\TraitController;
 
 use App\Http\Requests\Cms\SlideHomeRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 trait BaseController
@@ -49,9 +50,28 @@ trait BaseController
     public function helperStore($request)
     {
         $params = $request->all();
-        $url = $this->helperSaveImage($request);
+        $column = DB::getSchemaBuilder()->getColumnListing($this->tableName);
+        if ($request->hasFile('image')) {
+            $urlImage = $this->helperSaveImage($request['image']);
+            $params['link_image'] = $urlImage;
+        }
 
-        $params['link_image'] = $url;
+        if ($request->hasFile('icon')) {
+            $urlIcon = $this->helperSaveImage($request['icon']);
+            $params['icon'] = $urlIcon;
+        }
+
+        if ($request->has('title')) {
+            $params['slug'] = create_slug($params['title']);
+        } elseif ($request->has('name')) {
+            $params['slug'] = create_slug($params['name']);
+        }
+        if (in_array('slug', $column)){
+            if ($this->model::getFirstByWhere('slug', '=', $params['slug']) != null) {
+                $params['slug'] = $params['slug'] . time();
+            }
+        }
+
         return $this->model::storeOrUpdate($params);
     }
 
@@ -59,16 +79,33 @@ trait BaseController
     {
         $params = $request->all();
         $params['id'] = $id;
+        $column = DB::getSchemaBuilder()->getColumnListing($this->tableName);
+
         if ($request->hasFile('image')) {
-            $url = $this->helperSaveImage($request);
+            $url = $this->helperSaveImage($request['image']);
             $params['link_image'] = $url;
         }
+        if ($request->hasFile('icon')) {
+            $url = $this->helperSaveImage($request['icon']);
+            $params['icon'] = $url;
+        }
+
+        if ($request->has('title')) {
+            $params['slug'] = create_slug($params['title']);
+        } elseif ($request->has('name')) {
+            $params['slug'] = create_slug($params['name']);
+        }
+        if (in_array('slug', $column)){
+            if (!$this->model::getList(['*'], [], [['column' => 'slug', 'value' => $params['slug']], ['column' => 'id', 'operator' => '!=', 'value' => $id]])->isEmpty()) {
+                $params['slug'] = $params['slug'] . time();
+            }
+        }
+
         return $this->model::storeOrUpdate($params);
     }
 
-    public function helperSaveImage($request)
+    public function helperSaveImage($image)
     {
-        $image = $request['image'];
         $extension = $image->extension();
 
         $name = time() . '-' . Auth::id() . '.' . $extension;

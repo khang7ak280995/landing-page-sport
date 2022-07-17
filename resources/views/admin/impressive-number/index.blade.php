@@ -27,6 +27,7 @@
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
+                                <th class="text-center">Số</th>
                                 <th class="text-center">Tiêu đề</th>
                                 <th class="text-center">Tiêu đề phụ</th>
                                 <th class="text-center">Icon</th>
@@ -58,6 +59,7 @@
                         searchable: false,
                         className: "text-center"
                     },
+                    {data: 'number', name: 'number', orderable: false, searchable: false},
                     {data: 'title', name: 'title', orderable: false, searchable: false},
                     {data: 'sub_title', name: 'sub_title', orderable: false, searchable: false},
                     {data: 'icon', name: 'icon', orderable: false, searchable: false, className: "text-center"},

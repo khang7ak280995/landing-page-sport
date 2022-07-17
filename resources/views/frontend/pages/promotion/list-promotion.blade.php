@@ -38,7 +38,7 @@
                                 {{$item->description}}
                             </p>
                             <div class="button1">
-                                <a href="{{route('detail-promotion',$item->id)}}">Xem thêm </a>
+                                <a href="{{route('detail-promotion',$item->slug)}}">Xem thêm </a>
                             </div>
                         </article>
                     @empty

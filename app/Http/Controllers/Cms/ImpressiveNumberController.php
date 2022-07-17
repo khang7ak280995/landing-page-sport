@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Cms;
 use App\Helpers\Constant;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TraitController\BaseController;
+use App\Http\Requests\Cms\ImpressNumberRequest;
 use App\Models\Cms\ImpressiveNumber;
 use App\Traits\HasAjaxRequest;
 use Carbon\Carbon;
@@ -16,12 +17,13 @@ class ImpressiveNumberController extends Controller
 {
     use ResponseTrait, HasAjaxRequest, BaseController;
 
-    protected $model, $slug;
+    protected $model, $slug, $tableName;
 
     public function __construct(ImpressiveNumber $model)
     {
         $this->model = $model;
         $this->slug = Constant::IMPRESSIVE_NUMBER;
+        $this->tableName = 'impressive_number';
     }
 
     public function getDataTable(Request $request)
@@ -50,5 +52,21 @@ class ImpressiveNumberController extends Controller
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+
+    public function store(ImpressNumberRequest $request)
+    {
+        $request->validate([
+            'icon' => 'required|max:2048'
+        ]);
+
+        $this->helperStore($request);
+        return back()->with('message', 'Create Success!');
+    }
+
+    public function update(ImpressNumberRequest $request, $id)
+    {
+        $this->helperUpdate($request, $id);
+        return back()->with('success', 'Update Success!');
     }
 }

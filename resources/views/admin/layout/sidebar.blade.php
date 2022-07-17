@@ -89,6 +89,27 @@
                 </li>
             </ul>
         </li><!-- End List Golfer Win HIO Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#{{ \App\Helpers\Constant::IMPRESSIVE_NUMBER }}-nav"
+               data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>
+                    {{ \App\Helpers\Constant::TEXT_CONVERT[\App\Helpers\Constant::IMPRESSIVE_NUMBER] }}
+                </span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="{{ \App\Helpers\Constant::IMPRESSIVE_NUMBER }}-nav" class="nav-content collapse "
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('cms.' .\App\Helpers\Constant::IMPRESSIVE_NUMBER.'.index') }}">
+                        <i class="bi bi-circle"></i><span>Danh sách</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('cms.' . \App\Helpers\Constant::IMPRESSIVE_NUMBER . '.create-edit') }}">
+                        <i class="bi bi-circle"></i><span>Thêm mới</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#{{ \App\Helpers\Constant::FAQ }}-nav"

@@ -18,12 +18,13 @@ class SlideHomeController extends Controller
 {
     use ResponseTrait, HasAjaxRequest, BaseController;
 
-    protected $model, $slug;
+    protected $model, $slug, $tableName;
 
     public function __construct(SlideHomeModel $model)
     {
         $this->slug = Constant::SLIDE_HOME;
         $this->model = $model;
+        $this->tableName = 'slide_home';
     }
 
     public function getDataTable(Request $request)

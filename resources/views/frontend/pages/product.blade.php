@@ -1,4 +1,20 @@
 @extends('frontend.layouts.main')
+@section('style')
+    <style>
+        ::-webkit-input-placeholder { /* Edge */
+            color: grey;
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer */
+            color: grey;
+        }
+
+        ::placeholder {
+            color: grey;
+        }
+    </style>
+
+@endsection
 @section('content')
     <section class="insurance-headline">
         <div class="container">
@@ -8,81 +24,22 @@
                         Bảo Hiểm HIO Theo Ngày
                     </h1>
                     <p>
-                        Suas iracundia his ea errem ridens nam an veniam equidem. Lorem ipsum dolor sit amet lore ipsum
-                        dolor sit amet
+
                     </p>
                 </div>
                 <ul class="row single-icons-wrapper">
-                    <li class="icon">
-                        <div class="single-icon">
-                            <a href="">
-                                <img src="images/icon-home.png" alt="">
-                                <h4>
-                                    D50
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="icon">
-                        <div class="single-icon">
-                            <a href="">
-                                <img src="images/icon-car.png" alt="">
-                                <h4>
-                                    D100
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="icon">
-                        <div class="single-icon">
-                            <a href="">
-                                <img src="images/icon-travel.png" alt="">
-                                <h4>
-                                    DQR100
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="icon">
-                        <div class="single-icon">
-                            <a href="">
-                                <img src="images/icon-luxury.png" alt="">
-                                <h4>
-                                    Dcard100
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="icon">
-                        <div class="single-icon">
-                            <a href="">
-                                <img src="images/icon-business.png" alt="">
-                                <h4>
-                                    D200
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="icon">
-                        <div class="single-icon">
-                            <a href="">
-                                <img src="images/icon-health.png" alt="">
-                                <h4>
-                                    DQR200
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="icon">
-                        <div class="single-icon last">
-                            <a href="">
-                                <img src="images/icon-health.png" alt="">
-                                <h4>
-                                    Dcard200
-                                </h4>
-                            </a>
-                        </div>
-                    </li>
+                    @foreach($listInsurancePackage as $insurancePackageItem)
+                        <li class="icon">
+                            <div class="single-icon {{ $loop->last ? 'last' : '' }}">
+                                <a href="{{ route('insurance-package.detail', $insurancePackageItem->slug) }}">
+                                    <img src="{{ asset($insurancePackageItem->icon) }}" alt="">
+                                    <h4>
+                                        {{ $insurancePackageItem->title }}
+                                    </h4>
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -90,43 +47,45 @@
     <!-- insurance headline end -->
 
     <!-- Mô tả sp -->
+    @php
+        if(!isset($insurancePackage)){
+            $insurancePackage = $listInsurancePackage->first();
+        }
+    @endphp
     <section class="wrapper100percent section1">
         <div class="sectionwrapper"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <h3>
-                        D50
+                        {{ $insurancePackage->title }}
                     </h3>
                     <br>
                     <p>
-                        "Chơi một tý, vui hết ý", chỉ với mức phí nhỏ golfer có cơ hội nhận về giải thưởng cao gấp 1000
-                        lần, phù hợp cho các giải đấu, outing hoặc mua tặng bạn bè,...
+                        {{ $insurancePackage->description }}
                     </p>
                     <div class="col-md-8 padding-out">
                         <ul class="insurance-list">
                             <li>
-                                <b>Giá tiền:</b> <span>200.000 VNĐ</span>
+                                <b>Giá tiền:</b> <span>{{ number_format($insurancePackage->amount) }} VNĐ</span>
                             </li>
                             <li>
-                                <b>Mức thưởng:</b> <span>100.000.000 VNĐ</span>
+                                <b>Mức thưởng:</b> <span>{{ number_format($insurancePackage->bonuses) }} VNĐ</span>
                             </li>
                             <li>
-                                <b>Hố quy định:</b> <span>Tất cả các hố par3 trong một vòng chơi 18 hố</span>
+                                <b>Hố quy định:</b> <span>{{ $insurancePackage->hole_regulation }}</span>
                             </li>
                         </ul>
 
                         <ul class="ul-list">
                             <li>
-                                <i class="fa fa-check"></i> Áp dụng tại tất cả các sân golf trên khắp cả nước
+                                <i class="fa fa-check"></i> {{ $insurancePackage->note }}
                             </li>
                         </ul>
                     </div>
-                    <!--div class="col-md-4 padding-out"-->
-                    <!--/div-->
                 </div>
                 <div class="col-md-4">
-                    <img src="{{asset('frontend/images/man.jpg')}}" alt="">
+                    <img src="{{ asset($insurancePackage->link_image) }}" alt="">
                 </div>
             </div>
         </div>
@@ -155,7 +114,7 @@
                         <li class="col-md-6 padding-out">
                             <div class="img-wrapper">
                                 <div class="img-wrapper-inner">
-                                    <img src="images/icon-homeb.png" alt="">
+                                    <img src="{{ asset('images/icon-homeb.png') }}" alt="">
                                 </div>
                             </div>
                             <div class="text-wrapper">
@@ -224,31 +183,30 @@
         <div class="container form-style-product">
             <h3>Đăng ký mua bảo hiểm HIO</h3>
             <!-- comment-form -->
-            <form class="wrapper100percent1" method="post" action="sendEmail.php">
+            <form class="wrapper100percent" method="post" id="form-register">
                 <div id="main">
                     <div>
-                        <p><input type="text" placeholder="Tên" name="name" id="name"/></p>
+                        <p><input type="text" placeholder="Tên" name="name" id="name" style="color: black"/></p>
                     </div>
                     <div>
-                        <p><input type="text" placeholder="Mã VGA" name="email" id="email"/></p>
+                        <p><input type="text" placeholder="Mã VGA" name="vga_code" id="vga_code"/></p>
                     </div>
                     <div>
-                        <p><input type="text" placeholder="Số điện thoại" name="subject" id="subject"/></p>
+                        <p><input type="text" placeholder="Số điện thoại" name="phone" id="phone"/></p>
                     </div>
                     <div>
                         <select id="form_service" name="service" placeholder="Service">
                             <option value="0"> Gói sản phẩm quan tâm</option>
-                            <option value="1"> Gói D</option>
-                            <option value="2"> Gói M</option>
-                            <option value="3"> Gói Y</option>
+                            <option value="D"> Gói D</option>
+                            <option value="M"> Gói M</option>
+                            <option value="Y"> Gói Y</option>
                         </select>
                     </div>
-{{--                    <p><textarea placeholder="your message" name="comments" id="comments" rows="5"--}}
-{{--                                 cols="5"></textarea>--}}
-{{--                    </p>--}}
                     <div class="buttoncontact text-center">
                         <p>
-                            <input type="submit" name="submit" id="submit" value="Gui đi"/>
+                            <button type="submit" class="btn btn-info" name="submit" id="submit" value="Gửi đi">Gửi
+                                thông tin
+                            </button>
                         </p>
                     </div>
                     <ul class="col-sm-12" id="response"></ul>
@@ -260,3 +218,41 @@
     </section>
     <!-- FAQ end -->
 @endsection
+
+@push('scripts')
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        const homeForm = document.getElementById("form-register");
+        $('#form-register').on('submit', function (e) {
+            e.preventDefault();
+
+            let name = $('#name').val();
+            let vga_code = $('#vga_code').val();
+            let phone = $('#phone').val();
+            let package_buy = $("#form_service").val();
+
+            $.ajax({
+                url: "{{url('/api/v1/customer-register-insurance')}}",
+                type: "POST",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    name: name,
+                    vga_code: vga_code,
+                    phone: phone,
+                    package_buy: package_buy,
+                },
+                success: function (response) {
+                    swal("Chúc mừng!", "bạn đã đăng kí thành công!", "success");
+                    homeForm.reset()
+                    $('#successMsg').show();
+                },
+                error: function (response) {
+                    $('#nameErrorMsg').text(response.responseJSON.errors.name);
+                    $('#emailErrorMsg').text(response.responseJSON.errors.email);
+                    $('#mobileErrorMsg').text(response.responseJSON.errors.mobile);
+                    $('#messageErrorMsg').text(response.responseJSON.errors.message);
+                },
+            });
+        });
+    </script>
+@endpush

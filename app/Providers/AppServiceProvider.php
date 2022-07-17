@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use App\Models\Settings\ConfigModel;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $file = app_path('Helpers/helpers.php');
+        if (file_exists($file)){
+            require_once($file);
+        }
     }
 
     /**
@@ -25,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         //
         $query = ConfigModel::query()->where('status', 0);
         $config = $query->whereIn('type', ['config'])->get();

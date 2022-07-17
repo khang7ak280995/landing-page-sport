@@ -12,8 +12,10 @@ class ImpressiveNumber extends BaseModel
 
     protected $table = 'impressive_number';
     protected $fillable = [
+        'number',
         'title',
         'sub_title',
-        'icon'
+        'icon',
+        'is_show'
     ];
 }

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
 class PromotionController extends Controller
@@ -96,6 +97,7 @@ class PromotionController extends Controller
             'image' => $url,
             'content'=>$request['content'],
             'is_especially'=>$request['is_especially'],
+            'slug' => Str::slug($request->get('title') . '-' . time()),
         ];
         $data = PromotionModel::storeOrUpdate($params);
         return back()->with('message', 'Tạo khuyến mãi thành công!');
