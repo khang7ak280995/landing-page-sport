@@ -5,25 +5,24 @@ namespace App\Http\Controllers\Cms;
 use App\Helpers\Constant;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TraitController\BaseController;
-use App\Http\Requests\Cms\SlideHomeRequest;
-use App\Models\Settings\SlideHomeModel;
+use App\Http\Requests\Cms\ListGolferWinHIORequest;
+use App\Models\Cms\ListGolferWinHIO;
 use App\Traits\HasAjaxRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\ResponseTrait;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
-class SlideHomeController extends Controller
+class ListGolferWinHIOController extends Controller
 {
     use ResponseTrait, HasAjaxRequest, BaseController;
 
     protected $model, $slug;
 
-    public function __construct(SlideHomeModel $model)
+    public function __construct(ListGolferWinHIO $model)
     {
-        $this->slug = Constant::SLIDE_HOME;
         $this->model = $model;
+        $this->slug = Constant::LIST_GOLFER_WIN_HIO;
     }
 
     public function getDataTable(Request $request)
@@ -32,9 +31,8 @@ class SlideHomeController extends Controller
         return DataTables::of($data)
             ->escapeColumns([])
             ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-                $actionBtn = '<a class="btn btn-success btn-sm" href="' . route('cms.' . $this->slug . '.create-edit', $row->id) . '">Edit</button> <a href="javascript:void(0)" data-route="' . route('cms.' . $this->slug . '.delete', $row->id) . '" data-id="' . $row->id . '" class="delete btn btn-danger btn-sm delete-item-datatable" data-bs-toggle="modal" data-bs-target="#modal-confirm-delete">Delete</a>';
-                return $actionBtn;
+            ->editColumn('date_post', function ($row) {
+                return Carbon::parse($row->date_post)->format('d-m-Y');
             })
             ->editColumn('is_show', function ($row) {
                 if ($row->is_show == 1) {
@@ -47,11 +45,15 @@ class SlideHomeController extends Controller
             ->editColumn('link_image', function ($row) {
                 return '<img class="w-100" src="' . asset($row->link_image) . '">';
             })
+            ->addColumn('action', function ($row) {
+                $actionBtn = '<a class="btn btn-success btn-sm" href="' . route('cms.' . $this->slug . '.create-edit', $row->id) . '">Edit</button> <a href="javascript:void(0)" data-route="' . route('cms.' . $this->slug . '.delete', $row->id) . '" data-id="' . $row->id . '" class="delete btn btn-danger btn-sm delete-item-datatable" data-bs-toggle="modal" data-bs-target="#modal-confirm-delete">Delete</a>';
+                return $actionBtn;
+            })
             ->rawColumns(['action'])
             ->make(true);
     }
 
-    public function store(SlideHomeRequest $request)
+    public function store(ListGolferWinHIORequest $request)
     {
         $request->validate([
             'image' => 'required|max:2048'
@@ -61,7 +63,7 @@ class SlideHomeController extends Controller
         return back()->with('message', 'Create Success!');
     }
 
-    public function update(SlideHomeRequest $request, $id)
+    public function update(ListGolferWinHIORequest $request, $id)
     {
         $this->helperUpdate($request, $id);
         return back()->with('success', 'Update Success!');

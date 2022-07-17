@@ -35,8 +35,8 @@
 
                         <!-- Custom Styled Validation -->
                         <form class="row g-3 needs-validation" novalidate
-                              @if(isset($slide))
-                                  action="{{ route('cms.slide-home.update', $slide->id) }}"
+                              @if(isset($query))
+                                  action="{{ route('cms.slide-home.update', $query->id) }}"
                               @else
                                   action="{{ route('cms.slide-home.store') }}"
                               @endif
@@ -47,7 +47,7 @@
                                 <label for="title" class="col-sm-2 col-form-label form-label">Title</label>
                                 <div class="col-sm-10">
                                     <input name="title" type="text" class="form-control" id="title"
-                                           value="{{ isset($slide) ? $slide->title : '' }}"
+                                           value="{{ isset($query) ? $query->title : '' }}"
                                            placeholder="Title........" required>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -58,7 +58,7 @@
                                 <label for="description" class="col-sm-2 col-form-label form-label">Description</label>
                                 <div class="col-sm-10">
                                     <input name="description" type="text" class="form-control" id="description"
-                                           value="{{ isset($slide) ? $slide->description : '' }}"
+                                           value="{{ isset($query) ? $query->description : '' }}"
                                            placeholder="Description......." value="" required>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -71,7 +71,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <input class="form-control image" type="file"
-                                                   {{ !isset($slide) ? 'required' : '' }}
+                                                   {{ !isset($query) ? 'required' : '' }}
                                                    name="image" >
                                             <div class="valid-feedback">
                                                 Looks good!
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <img id="imageUser-Edit" class="previewImg" src="{{ isset($slide) ? asset($slide->link_image) : '' }}" style="width: 100%">
+                                                <img id="imageUser-Edit" class="previewImg" src="{{ isset($query) ? asset($query->link_image) : '' }}" style="width: 100%">
                                             </div>
                                         </div>
                                     </div>

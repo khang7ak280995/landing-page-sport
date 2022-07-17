@@ -27,6 +27,7 @@
     <link href="{{ asset('admin/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('admin/assets/css/style.css') }}" rel="stylesheet">
@@ -42,6 +43,7 @@
     @yield('content')
 </main>
 
+@include('admin.component.dialog-confirm-delete')
 {{--@include('admin.layout.footer')--}}
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -57,12 +59,15 @@
 <script src="{{ asset('admin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/php-email-form/validate.js') }}"></script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('admin/assets/js/main.js') }}"></script>
 
 <!-- Custom JS -->
 <script src="{{ asset('admin/js/vendor.js') }}"></script>
+<script src="{{ asset('admin/js/helper.js') }}"></script>
 
 @stack('scripts')
 
