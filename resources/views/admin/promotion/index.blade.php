@@ -84,11 +84,9 @@
                     type: "POST",
                     url: "{{ url('cms/promotion/delete') }}" + '/' + config_id,
                     success: function (data) {
-                        console.log(data);
                         table.draw();
                     },
                     error: function (data) {
-                        console.log(1111)
                         console.log('Error:', data);
                     }
                 });

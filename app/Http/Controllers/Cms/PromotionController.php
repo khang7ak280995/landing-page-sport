@@ -94,13 +94,14 @@ class PromotionController extends Controller
             'title' => $request['title'],
             'description' => $request['description'],
             'image' => $url,
-            'content'=>$request['content']
+            'content'=>$request['content'],
+            'is_especially'=>$request['is_especially'],
         ];
         $data = PromotionModel::storeOrUpdate($params);
         return back()->with('message', 'Tạo khuyến mãi thành công!');
     }
 
-    public function update(Request $request, $id)
+    public function update(PromotionRequest $request, $id)
     {
         //
         $params = $request->all();

@@ -1542,6 +1542,7 @@ http://flickity.metafizzy.co
   padding: 27px 14px;
   float: left;
   width: 100%;
+  height: 200px;
 }
 .teamcolumn .team-name h6 {
   margin-bottom: 7px;
@@ -1552,6 +1553,11 @@ http://flickity.metafizzy.co
 }
 .teamcolumn .team-name p {
   margin-bottom: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  overflow: hidden;
+  width: auto;
 }
 i.teamicon {
   display: inline-block;
@@ -1629,6 +1635,8 @@ i.teamicon:hover {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  height: 230px;
+  width: 100%;
 }
 .view-first1 .mask {
   background: rgba(83, 174, 221, 0.8);
@@ -1826,7 +1834,7 @@ i.teamicon:hover {
     max-width: 100%;
   }
 }
-.buttoncontact input {
+.buttoncontact button {
   display: inline-block;
   text-wrap: none;
   text-align: center;

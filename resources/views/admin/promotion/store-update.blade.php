@@ -80,6 +80,15 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
+                                <label for="content" class="col-sm-2 col-form-label form-label">Khuyến mãi đặc biệt</label>
+                                <div class="col-sm-10">
+                                    <select name="highlight" class="form-control">
+                                        <option value="0" {{@$promotion && @$promotion->is_especially === 0 ? "selected" : "" }}>normal</option>
+                                        <option value="1" {{@$promotion && @$promotion->is_especially === 1 ? "selected" : "" }}>Đặc biệt</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label for="image" class="col-sm-2 col-form-label form-label">Image</label>
                                 <div class="col-sm-10">
                                     <div class="row">
