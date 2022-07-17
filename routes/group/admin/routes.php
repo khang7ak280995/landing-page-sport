@@ -79,6 +79,20 @@ Route::group([
     });
 
     Route::group([
+        'prefix' => \App\Helpers\Constant::USER,
+        'as' => \App\Helpers\Constant::USER . '.'
+    ], function () {
+        Route::get('', [\App\Http\Controllers\Cms\UserController::class, 'index'])->name('index');
+        Route::get('getDataTable', [\App\Http\Controllers\Cms\UserController::class, 'getDataTable'])->name('getDataTable');
+        Route::get('create-edit/{id?}', [\App\Http\Controllers\Cms\UserController::class, 'createOrEdit'])->name('create-edit');
+        Route::post('store', [\App\Http\Controllers\Cms\UserController::class, 'store'])->name('store');
+        Route::post('update/{id}', [\App\Http\Controllers\Cms\UserController::class, 'update'])->name('update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Cms\UserController::class, 'delete'])->name('delete');
+        Route::get('change-show/{id}', [\App\Http\Controllers\Cms\UserController::class, 'changeShow'])->name('change-show');
+        Route::get('change-show-home-page/{id}', [\App\Http\Controllers\Cms\UserController::class, 'changeShowHomePage'])->name('change-show-home-page');
+    });
+
+    Route::group([
         'prefix' => 'promotion',
         'as' => 'promotion.'
     ], function () {

@@ -43,6 +43,7 @@
     @yield('content')
 </main>
 
+@include('admin.component.dialog-confirm-delete')
 {{--@include('admin.layout.footer')--}}
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
