@@ -43,7 +43,6 @@
     @yield('content')
 </main>
 
-@include('admin.component.dialog-confirm-delete')
 {{--@include('admin.layout.footer')--}}
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -61,6 +60,7 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('admin/assets/js/main.js') }}"></script>

@@ -12,10 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.pages.home');
 });
+Route::get('/products', function () {
+    return view('frontend.pages.product');
+});
+Route::get('/list-hio', function () {
+    return view('frontend.pages.hio.list-hio');
+});
+Route::get('/detail-hio', function () {
+    return view('frontend.pages.hio.detail-hio');
+});
+Route::get('/promotions', [\App\Http\Controllers\Webpage\PromotionController::class, 'index'])->name('promotions');
+Route::get('/detail-promotion/{id}', [\App\Http\Controllers\Webpage\PromotionController::class, 'view'])->name('detail-promotion');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
