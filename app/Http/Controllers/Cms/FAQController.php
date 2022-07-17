@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Cms;
 
+use App\Helpers\Constant;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TraitController\BaseController;
 use App\Http\Requests\Cms\FAQRequest;
@@ -16,12 +17,13 @@ class FAQController extends Controller
 {
     use HasAjaxRequest, ResponseTrait, BaseController;
 
-    protected $slug, $model;
+    protected $slug, $model, $tableName;
 
     public function __construct(FAQ $model)
     {
         $this->model = $model;
-        $this->slug = 'faq';
+        $this->slug = Constant::FAQ;
+        $this->tableName = 'faq';
     }
 
     public function getDataTable(Request $request)

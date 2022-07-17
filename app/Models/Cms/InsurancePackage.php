@@ -20,6 +20,8 @@ class InsurancePackage extends BaseModel
         'link_image',
         'note',
         'is_show_home_page',
-        'is_show'
+        'is_show',
+        'icon',
+        'slug'
     ];
 }

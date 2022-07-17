@@ -17,12 +17,13 @@ class ListGolferWinHIOController extends Controller
 {
     use ResponseTrait, HasAjaxRequest, BaseController;
 
-    protected $model, $slug;
+    protected $model, $slug, $tableName;
 
     public function __construct(ListGolferWinHIO $model)
     {
         $this->model = $model;
         $this->slug = Constant::LIST_GOLFER_WIN_HIO;
+        $this->tableName = 'list_golfer_win_prize';
     }
 
     public function getDataTable(Request $request)

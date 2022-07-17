@@ -26,7 +26,6 @@ class ImpressNumberRequest extends FormRequest
         return [
             'title'     => 'required',
             'sub_title' => 'required',
-            'icon'      => 'required'
         ];
     }
 }

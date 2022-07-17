@@ -3,66 +3,97 @@
     <section class="wrapper100percent">
         <div class="flexslider">
             <ul class="slides">
-                <li>
-                    <img src="{{asset('frontend/images/slider1.jpg')}}" alt=""/>
-                    <div class="flex-caption flex-caption1">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
-                                    <h1>
-                                        Trao thưởng nhanh chóng - Thủ tục đơn giản
-                                    </h1>
-                                    <p>
-                                        Trả thưởng trong 48h kể từ khi hoàn tất hồ sơ
-                                    </p>
-                                    <div class="button1">
-                                        <a href="#menu6">Đăng Ký</a>
+                @if(isset($slideImage))
+                    @foreach($slideImage as $item)
+                        <li>
+                            <img src="{{ asset($item->link_image) }}" alt=""/>
+                            <div class="flex-caption flex-caption1">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
+                                            <h1>
+                                                {{ $item->title }}
+                                            </h1>
+                                            <p>
+                                                {{ $item->description }}
+                                            </p>
+                                            <div class="button1">
+                                                <a href="#menu6">Đăng Ký</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                @else
+                    <li>
+                        <img src="{{ asset('frontend/images/slider1.jpg') }}" alt=""/>
+                        <div class="flex-caption flex-caption1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
+                                        <h1>
+                                            Trao thưởng nhanh chóng - Thủ tục đơn giản
+                                        </h1>
+                                        <p>
+                                            Trả thưởng trong 48h kể từ khi hoàn tất hồ sơ
+                                        </p>
+                                        <div class="button1">
+                                            <a href="#menu6">Đăng Ký</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="{{asset('frontend/images/slider2.jpg')}}" alt=""/>
-                    <div class="flex-caption flex-caption1">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
-                                    <h1>
-                                        Hội viên Năm "Cứ mua là trúng"
-                                    </h1>
-                                    <p>
-                                        Đặc quyền 5K: Không giới hạn khoảng cách - Không giới hạn số lần trúng - Không giới hạn số trận đánh - Không cần khai báo khi chơi - Không thu thêm phí thường niên
-                                    </p>
-                                    <div class="button1">
-                                        <a href="#menu6">Đăng Ký</a>
+                    </li>
+                    <li>
+                        <img src="{{ asset('frontend/images/slider1.jpg') }}" alt=""/>
+                        <div class="flex-caption flex-caption1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
+                                        <h1>
+                                            Hội viên Năm "Cứ mua là trúng"
+                                        </h1>
+                                        <p>
+                                            Đặc quyền 5K: Không giới hạn khoảng cách - Không giới hạn số lần trúng -
+                                            Không
+                                            giới hạn số trận đánh - Không cần khai báo khi chơi - Không thu thêm phí
+                                            thường
+                                            niên
+                                        </p>
+                                        <div class="button1">
+                                            <a href="#menu6">Đăng Ký</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="{{asset('frontend/images/slider3.jpg')}}" alt=""/>
-                    <div class="flex-caption flex-caption1">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
-                                    <h1>
-                                        Dịch vụ giải thưởng HIO theo ngày
-                                    </h1>
-                                    <p>
-                                        "Chơi một tý, vui hết ý", chỉ với mức phí nhỏ golfer có cơ hội nhận về giải thưởng cao gấp 1000 lần, phù hợp cho các giải đấu, outing hoặc mua tặng bạn bè,..
-                                    </p>
-                                    <div class="button1">
-                                        <a href="#menu6">Đăng Ký</a>
+                    </li>
+                    <li>
+                        <img src="{{ asset('frontend/images/slider1.jpg') }}" alt=""/>
+                        <div class="flex-caption flex-caption1">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6 col-lg-push-8 col-md-push-6">
+                                        <h1>
+                                            Dịch vụ giải thưởng HIO theo ngày
+                                        </h1>
+                                        <p>
+                                            "Chơi một tý, vui hết ý", chỉ với mức phí nhỏ golfer có cơ hội nhận về giải
+                                            thưởng cao gấp 1000 lần, phù hợp cho các giải đấu, outing hoặc mua tặng bạn
+                                            bè,..
+                                        </p>
+                                        <div class="button1">
+                                            <a href="#menu6">Đăng Ký</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                @endif
             </ul>
         </div>
     </section>
@@ -74,74 +105,34 @@
         <div class="mainheadlinewrapper">
             <div class="mainheadline">
                 <h2>Gói Sản Phẩm</h2>
-                <h3>Suas iracundia his ea errem ridens nam an veniam equidem. Lorem ipsum dolor sit amet lore ipsum dolor sit amet
+                <h3>
+
                 </h3>
             </div>
         </div>
         <div class="wrapper100percent">
             <div class="row">
                 <div class="services">
-                    <!-- one service -->
-                    <div class="one-service color1">
-                        <ul>
-                            <li>
-                                <img src="images/icon-home.png" alt="">
-                                <h3>Gói D</h3>
-                                <ul>
-                                    <li>
-                                        <p>
-                                            Phù hợp cho golfer chơi trong ngày, chơi theo giải đấu, outing CLB,...
-                                        </p>
-                                        <a href="sanpham.html">
-                                            Xem thêm <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- one service end -->
-                    <!-- one service -->
-                    <div class="one-service color2">
-                        <ul>
-                            <li>
-                                <img src="images/icon-car.png" alt="">
-                                <h3>Gói Y</h3>
-                                <ul>
-                                    <li>
-                                        <p>
-                                            Tận hưởng vô vàn đặc quyền của thẻ Y "Mua là Trúng"
-                                        </p>
-                                        <a href="sanpham.html">
-                                            Xem thêm <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- one service end -->
-                    <!-- one service -->
-                    <div class="one-service color3">
-                        <ul>
-                            <li>
-                                <img src="images/icon-travel.png" alt="">
-                                <h3>Gói M</h3>
-                                <ul>
-                                    <li>
-                                        <p>
-                                            Gói chơi trong thời hạn 6 tháng phù hợp cho golfer chơi theo mùa với mức giá tốt nhất
-                                        </p>
-                                        <a href="sanpham.html">
-                                            Xem thêm <i class="fa fa-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- one service end -->
-
+                    @foreach($insurancePackage as $packageItem)
+                        <div class="one-service color{{ $loop->index + 1 }}">
+                            <ul>
+                                <li>
+                                    <img src="{{ asset($packageItem->icon) }}" alt="">
+                                    <h3>{{ $packageItem->title }}</h3>
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                {{ $packageItem->description }}...
+                                            </p>
+                                            <a href="{{ route('insurance-package.detail', $packageItem->slug) }}">
+                                                Xem thêm <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -159,7 +150,9 @@
                     <h3>Trở Thành Đại Lý Của VGS Sport</h3>
                     <br>
                     <p>
-                        Suas iracundia his ea. Ex nec veniam singulis. No errem ridens eam, nam an veniam equidem nam an veniam equidem. No errem ridens eam, nam an veniam equidem lorem. Eu legendos definitiones vim, ea menandri voluptatum convenire quo ad lorem ipsum dolor.
+                        Suas iracundia his ea. Ex nec veniam singulis. No errem ridens eam, nam an veniam equidem nam an
+                        veniam equidem. No errem ridens eam, nam an veniam equidem lorem. Eu legendos definitiones vim,
+                        ea menandri voluptatum convenire quo ad lorem ipsum dolor.
                     </p>
                     <ul class="ul-list">
                         <li>
@@ -190,46 +183,21 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <!-- one counter -->
-                        <div class="col-sm-4">
-                            <div class="onecounter">
-                                <div class="onecounter-left">
-                                    <img width="55px" height="61px" src="images/icon-counter1.svg" alt="">
-                                </div>
-                                <div class="onecounter-right">
-                                    <p><span class="timer" data-to="20" data-speed="100" data-refresh-interval="1">1</span></p> <p>Tỷ</p>
-                                    <h6> Đã được trao</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- one counter end -->
-                        <!-- one counter -->
-                        <div class="col-sm-4">
-                            <div class="onecounter">
-                                <div class="onecounter-left">
-                                    <img width="55px" height="61px" src="images/icon-counter2.svg" alt="">
-                                </div>
-                                <div class="onecounter-right">
-                                    <p><span class="timer" data-to="128" data-speed="100" data-refresh-interval="1">1</span></p>
-                                    <h6> Golfer trúng thưởng</h6>
+                        @foreach($impressiveNumber as $impressiveNumberItem)
+                            <div class="col-sm-4">
+                                <div class="onecounter">
+                                    <div class="onecounter-left">
+                                        <img width="55px" height="61px" src="{{ asset($impressiveNumberItem->icon) }}" alt="">
+                                    </div>
+                                    <div class="onecounter-right">
+                                        <p><span class="timer" data-to="{{ $impressiveNumberItem->number }}" data-speed="1000"
+                                                 data-refresh-interval="1">1</span></p>
+                                        <p>{{ $impressiveNumberItem->title }}</p>
+                                        <h6>{{ $impressiveNumberItem->sub_title }}</h6>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- one counter end -->
-                        <!-- one counter -->
-                        <div class="col-sm-4">
-                            <div class="onecounter">
-                                <div class="onecounter-left">
-                                    <img src="images/icon-counter3.svg" width="55px" height="61px" alt="">
-                                </div>
-                                <div class="onecounter-right">
-                                    <p><span class="timer" data-to="500" data-speed="100" data-refresh-interval="1">1</span></p> <p>Triệu</p>
-                                    <h6> Mức thưởng tối đa</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- one counter end -->
-
+                        @endforeach
                     </div>
                     <!-- row end -->
                 </div>
@@ -274,7 +242,8 @@
                                 <img src="images/team1.jpg" alt="">
                                 <figcaption class="mask">
                                     <div class="maskinner">
-                                        <a class="text" href="team_single.html">Xem thêm <i class="fa fa-angle-right"></i></a>
+                                        <a class="text" href="team_single.html">Xem thêm <i
+                                                    class="fa fa-angle-right"></i></a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -297,7 +266,8 @@
                                 <img src="images/team2.jpg" alt="">
                                 <figcaption class="mask">
                                     <div class="maskinner">
-                                        <a class="text" href="team_single.html">Xem thêm <i class="fa fa-angle-right"></i></a>
+                                        <a class="text" href="team_single.html">Xem thêm <i
+                                                    class="fa fa-angle-right"></i></a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -320,7 +290,8 @@
                                 <img src="images/team3.jpg" alt="">
                                 <figcaption class="mask">
                                     <div class="maskinner">
-                                        <a class="text" href="team_single.html">Xem thêm <i class="fa fa-angle-right"></i></a>
+                                        <a class="text" href="team_single.html">Xem thêm <i
+                                                    class="fa fa-angle-right"></i></a>
                                     </div>
                                 </figcaption>
                             </figure>
@@ -347,7 +318,8 @@
         <div class="mainheadlinewrapper">
             <div class="mainheadline">
                 <h2>Golfer Trúng HIO</h2>
-                <h3>Suas iracundia his ea errem ridens nam an veniam equidem. Lorem ipsum dolor sit amet lore ipsum dolor sit amet
+                <h3>Suas iracundia his ea errem ridens nam an veniam equidem. Lorem ipsum dolor sit amet lore ipsum
+                    dolor sit amet
                 </h3>
             </div>
         </div>
@@ -375,8 +347,8 @@
                             <div class="wrapper100percent">
                                 <h4>Golfer Nguyễn Tiến Minh </h4>
                                 <div class="date">
-                                    <p>  <i class="fa fa-clock-o"></i>  22/12/2015 </p>
-                                    <p> <i class="fa fa-user"></i>   <a href=""> Admin</a>  </p>
+                                    <p><i class="fa fa-clock-o"></i> 22/12/2015 </p>
+                                    <p><i class="fa fa-user"></i> <a href=""> Admin</a></p>
                                 </div>
                                 <p>420,000,000đ
                                     149 yard | Gậy 8 sắt | SkyLake | HDC: 11 </p>
@@ -396,8 +368,8 @@
                             <div class="wrapper100percent">
                                 <h4>Golfer Nguyễn Văn Cường</h4>
                                 <div class="date">
-                                    <p>  <i class="fa fa-clock-o"></i>  22/12/2015 </p>
-                                    <p> <i class="fa fa-user"></i>   <a href=""> Admin</a>  </p>
+                                    <p><i class="fa fa-clock-o"></i> 22/12/2015 </p>
+                                    <p><i class="fa fa-user"></i> <a href=""> Admin</a></p>
                                 </div>
                                 <p>420,000,000đ
                                     159 yard | Gậy 8 sắt | Long Biên | HDC: 5.9</p>
@@ -417,8 +389,8 @@
                             <div class="wrapper100percent">
                                 <h4>Golfer Nguyễn Trần Trọng Nghĩa</h4>
                                 <div class="date">
-                                    <p>  <i class="fa fa-clock-o"></i>  22/12/2015 </p>
-                                    <p> <i class="fa fa-user"></i>   <a href=""> Admin</a>  </p>
+                                    <p><i class="fa fa-clock-o"></i> 22/12/2015 </p>
+                                    <p><i class="fa fa-user"></i> <a href=""> Admin</a></p>
                                 </div>
                                 <p>300,000,000đ
                                     120 yard | Gậy 8 sắt | The Buffs Hồ Tràm | HDC: 15.3 </p>
@@ -438,8 +410,8 @@
                             <div class="wrapper100percent">
                                 <h4>Golfer Nguyễn Tiến Minh </h4>
                                 <div class="date">
-                                    <p>  <i class="fa fa-clock-o"></i>  22/12/2015 </p>
-                                    <p> <i class="fa fa-user"></i>   <a href=""> Admin</a>  </p>
+                                    <p><i class="fa fa-clock-o"></i> 22/12/2015 </p>
+                                    <p><i class="fa fa-user"></i> <a href=""> Admin</a></p>
                                 </div>
                                 <p>420,000,000đ
                                     149 yard | Gậy 8 sắt | SkyLake | HDC: 11 </p>
@@ -459,8 +431,8 @@
                             <div class="wrapper100percent">
                                 <h4>Golfer Nguyễn Văn Cường</h4>
                                 <div class="date">
-                                    <p>  <i class="fa fa-clock-o"></i>  22/12/2015 </p>
-                                    <p> <i class="fa fa-user"></i>   <a href=""> Admin</a>  </p>
+                                    <p><i class="fa fa-clock-o"></i> 22/12/2015 </p>
+                                    <p><i class="fa fa-user"></i> <a href=""> Admin</a></p>
                                 </div>
                                 <p>420,000,000đ
                                     159 yard | Gậy 8 sắt | Long Biên | HDC: 5.9</p>
@@ -480,8 +452,8 @@
                             <div class="wrapper100percent">
                                 <h4>Golfer Nguyễn Trần Trọng Nghĩa</h4>
                                 <div class="date">
-                                    <p>  <i class="fa fa-clock-o"></i>  22/12/2015 </p>
-                                    <p> <i class="fa fa-user"></i>   <a href=""> Admin</a>  </p>
+                                    <p><i class="fa fa-clock-o"></i> 22/12/2015 </p>
+                                    <p><i class="fa fa-user"></i> <a href=""> Admin</a></p>
                                 </div>
                                 <p>300,000,000đ
                                     120 yard | Gậy 8 sắt | The Buffs Hồ Tràm | HDC: 15.3 </p>
@@ -506,70 +478,95 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingOne">
                             <h4 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne">
                                     Dịch vụ giải thưởng HIO là gì?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                             aria-labelledby="headingOne">
                             <div class="panel-body">
-                                Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable.
+                                Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
+                                denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore
+                                sustainable.
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingTwo">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Điều kiện để tham gia dịch vụ HIO của VGS Sport?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingTwo">
                             <div class="panel-body">
-                                Bassumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable.
+                                Bassumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard of them accusamus labore sustainable.
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingThree">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Làm sao để đăng kí mua dịch vụ giải thưởng HIO của VGS Sport?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingThree">
                             <div class="panel-body">
-                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable.
+                                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                                assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard of them accusamus labore sustainable.
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingFour">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     Hạn mức giải thưởng tối đa golfer có thể nhận được là bao nhiêu?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingFour">
                             <div class="panel-body">
-                                Bassumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable.
+                                Bassumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard of them accusamus labore sustainable.
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="headingFive">
                             <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     Bảo hiểm HIO có giới hạn khoảng cách không?
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                             aria-labelledby="headingFive">
                             <div class="panel-body">
-                                Bassumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable.
+                                Bassumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                                cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard of them accusamus labore sustainable.
                             </div>
                         </div>
                     </div>
@@ -587,10 +584,10 @@
                             <p><input type="text" placeholder="Tên" name="name" id="name"/></p>
                         </div>
                         <div>
-                            <p> <input type="text" placeholder="Mã VGA" name="email" id="email" /></p>
+                            <p><input type="text" placeholder="Mã VGA" name="email" id="email"/></p>
                         </div>
                         <div>
-                            <p> <input type="text" placeholder="Số điện thoại" name="subject" id="subject" /></p>
+                            <p><input type="text" placeholder="Số điện thoại" name="subject" id="subject"/></p>
                         </div>
                         <div>
                             <select id="form_service" name="service" placeholder="Service">
@@ -601,11 +598,12 @@
                             </select>
                         </div>
                         <p>
-                            <textarea placeholder="your message" name="comments" id="comments" rows="5" cols="5"></textarea>
+                            <textarea placeholder="your message" name="comments" id="comments" rows="5"
+                                      cols="5"></textarea>
                         </p>
                         <div class="buttoncontact">
                             <p>
-                                <input  type="submit"  name="submit" id="submit" value="Gửi đi"  />
+                                <input type="submit" name="submit" id="submit" value="Gửi đi"/>
                             </p>
                         </div>
                         <ul class="col-sm-12" id="response"></ul>
@@ -625,7 +623,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="map-overlay" onClick="style.pointerEvents='none'"> </div>
+                    <div class="map-overlay" onClick="style.pointerEvents='none'"></div>
                     <div class="map">
                         <iframe
                                 src="https://maps.google.com/maps?sll=42.3232039,-71.1423464&amp;sspn=0.0974788,0.1757965&amp;q=new+yourk+near+Brookline,+MA&amp;ie=UTF8&amp;hq=new+york&amp;hnear=Brookline,+Norfolk+County,+Massachusetts&amp;t=m&amp;ll=42.343748,-71.142702&amp;spn=0.081827,0.222714&amp;output=embed">

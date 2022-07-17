@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('frontend.pages.home');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'homePage'])->name('home');
 Route::get('/products', function () {
     return view('frontend.pages.product');
 });
@@ -31,4 +29,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('insurance-package/{slug?}', [\App\Http\Controllers\HomeController::class, 'insurancePackageDetail'])->name('insurance-package.detail');
+Route::group([
+    'prefix' => \App\Helpers\Constant::LIST_GOLFER_WIN_HIO,
+    'as' => \App\Helpers\Constant::LIST_GOLFER_WIN_HIO . '.'
+], function () {
+    Route::get('', [\App\Http\Controllers\HomeController::class, 'listGolferWinHIO'])->name('home');
+    Route::get('detail/{image}', [\App\Http\Controllers\HomeController::class, 'golferWinHIODetail'])->name('detail');
+});
+require __DIR__ . '/auth.php';
