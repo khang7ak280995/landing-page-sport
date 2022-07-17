@@ -18,7 +18,7 @@
                 <div class="card">
                     <h5 class="card-title" style="padding-left: 20px"> </h5>
                     <div class="card-body">
-                        <table class="table table-bordered" id="table">
+                        <table class="display table-index" id="table">
                             <thead>
                             <tr>
                                 <th>Id</th>

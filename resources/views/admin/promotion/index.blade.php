@@ -34,7 +34,7 @@
                 <div class="card">
                     <h5 class="card-title" style="padding-left: 20px"><a href="{{route('cms.promotion.create-edit')}}" class="btn btn-primary">Tạo khuyến mại</a> </h5>
                     <div class="card-body">
-                        <table class="table table-bordered" id="table">
+                        <table class="display table-index" id="table">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -64,12 +64,13 @@
             var table= $('#table').DataTable({
                 processing: true,
                 serverSide: true,
+                scrollX: true,
                 ajax: '{!! route('cms.promotion.index') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'title', name: 'name' },
-                    { data: 'content', name: 'content' },
-                    { data: 'status', name: 'status' },
+                    { data: 'content', name: 'content',orderable: false, searchable: false },
+                    { data: 'status', name: 'status',orderable: false, searchable: false, className: "text-center" },
                     { data: 'created_at', name: 'created_at' },
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
