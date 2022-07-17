@@ -112,6 +112,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="description" class="col-sm-2 col-form-label form-label">Mô tả</label>
+                                <div class="col-sm-10">
+                                    <textarea name="description" class="form-control" id="description"
+                                              required placeholder="Mô tả ...">{{ isset($query) ? $query->description : '' }}</textarea>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row mb-3">

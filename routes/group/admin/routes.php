@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'cms',
     'as' => 'cms.',
-//    'middleware' => ''
+    'middleware' => 'auth'
 ], function () {
     Route::get('', [\App\Http\Controllers\Cms\HomeController::class, 'index']);
 
@@ -62,5 +62,19 @@ Route::group([
         Route::get('delete/{id}', [\App\Http\Controllers\Cms\FAQController::class, 'delete'])->name('delete');
         Route::get('change-show/{id}', [\App\Http\Controllers\Cms\FAQController::class, 'changeShow'])->name('change-show');
         Route::get('change-show-home-page/{id}', [\App\Http\Controllers\Cms\FAQController::class, 'changeShowHomePage'])->name('change-show-home-page');
+    });
+
+    Route::group([
+        'prefix' => \App\Helpers\Constant::IMPRESSIVE_NUMBER,
+        'as' => \App\Helpers\Constant::IMPRESSIVE_NUMBER . '.'
+    ], function () {
+        Route::get('', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'index'])->name('index');
+        Route::get('getDataTable', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'getDataTable'])->name('getDataTable');
+        Route::get('create-edit/{id?}', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'createOrEdit'])->name('create-edit');
+        Route::post('store', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'store'])->name('store');
+        Route::post('update/{id}', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'update'])->name('update');
+        Route::get('delete/{id}', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'delete'])->name('delete');
+        Route::get('change-show/{id}', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'changeShow'])->name('change-show');
+        Route::get('change-show-home-page/{id}', [\App\Http\Controllers\Cms\ImpressiveNumberController::class, 'changeShowHomePage'])->name('change-show-home-page');
     });
 });

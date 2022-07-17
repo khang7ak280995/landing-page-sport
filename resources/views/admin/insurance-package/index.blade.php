@@ -5,13 +5,11 @@
 @section('content')
 
     <div class="pagetitle">
-        <h1>Slide Home</h1>
+        <h1>Gói HIO</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Insurance
-                    <Package></Package>
-                </li>
+                <li class="breadcrumb-item active">Insurance Package</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -25,7 +23,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Table Insurance Package</h5>
 
-                        <table class="table-index" id="table">
+                        <table class="display table-index" id="table">
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>

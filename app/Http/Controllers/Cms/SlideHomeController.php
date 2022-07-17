@@ -54,7 +54,7 @@ class SlideHomeController extends Controller
     public function store(SlideHomeRequest $request)
     {
         $request->validate([
-            'image' => 'required|max:2048'
+            'image' => 'required|max:3072'
         ]);
 
         $this->helperStore($request);
