@@ -24,12 +24,9 @@ Route::get('/list-hio', function () {
 Route::get('/detail-hio', function () {
     return view('frontend.pages.hio.detail-hio');
 });
-Route::get('/promotion', function () {
-    return view('frontend.pages.promotion.list-promotion');
-});
-Route::get('/detail-promotion', function () {
-    return view('frontend.pages.promotion.detail-promotion');
-});
+Route::get('/promotions', [\App\Http\Controllers\Webpage\PromotionController::class, 'index'])->name('promotions');
+Route::get('/detail-promotion/{id}', [\App\Http\Controllers\Webpage\PromotionController::class, 'view'])->name('detail-promotion');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

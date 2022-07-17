@@ -113,7 +113,10 @@
 
 @push('scripts')
     <script>
-        initialCkeditor("content_promotion", "/");
-        $('div.alert').delay(5000).slideUp(300);
+        ClassicEditor
+            .create( document.querySelector( '#content_promotion' ) )
+            .catch( error => {
+                console.error( error );
+            } );
     </script>
 @endpush

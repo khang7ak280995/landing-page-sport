@@ -133,7 +133,18 @@
                 </li>
             </ul>
         </li><!-- End Tables Nav -->
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#promotion-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Khuyến mại</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="promotion-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('cms.promotion.index')}}">
+                        <i class="bi bi-circle"></i><span>Danh sách</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Tables Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -200,6 +211,24 @@
             <a class="nav-link collapsed" href="pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>Contact</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('cms.config-info.index')}}">
+                <i class="bi bi-envelope"></i>
+                <span>Danh sách config</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('cms.become-agent.index')}}">
+                <i class="bi bi-envelope"></i>
+                <span>Danh sách ưu đãi</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('cms.customer-register.index')}}">
+                <i class="bi bi-envelope"></i>
+                <span>Danh sách đăng kí BH</span>
             </a>
         </li><!-- End Contact Page Nav -->
 

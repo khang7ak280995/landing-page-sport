@@ -12,8 +12,8 @@
             <div class="col-sm-4 text-right">
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Khuyến mại</a></li>
-                    <li class="active">Chuong trinh khuyen mai 1</li>
+                    <li><a href="{{route('promotions')}}">Khuyến mại</a></li>
+                    <li class="active">{{$promotion->title}}</li>
                 </ol>
             </div>
         </div>
@@ -23,47 +23,19 @@
     <div class="container blogpost">
         <div class="row">
             <div class="col-md-8">
-                <img src="{{asset('frontend/images/img1.jpg')}}" alt=""/>
-                <br>
-                <br>
-                <h4>This is headline</h4>
-                <br>
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
-                </p>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        Lorem ipsum dolor situtem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat
-                    </div>
+                <div class="detail_promotion">
+                    <img src="{{asset($promotion->image)}}" alt=""/>
                 </div>
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+                <p>  <i class="fa fa-clock-o"></i>  {{$promotion->created_at}} </p>
+                <br>
+                <br>
+                <h4>{{$promotion->title}}</h4>
+                <br>
+                <p>{{$promotion->description}}
                 </p>
-
-                <h4>This is headline</h4>
-                <br>
-                <ul class="ul-list">
-                    <li>
-                        <i class="fa fa-check"></i> Ne nec detracto appellantur nec detracto appellantur
-                    </li>
-                    <li>
-                        <i class="fa fa-check"></i> Aperiam accusamus vel eunec detracto appellantur
-                    </li>
-                    <li>
-                        <i class="fa fa-check"></i> Nam albucius ponderum rationibu nec detracto appellantur
-                    </li>
-                    <li>
-                        <i class="fa fa-check"></i> Ne nec detracto appellantur nec detracto appellantur
-                    </li>
-                    <li>
-                        <i class="fa fa-check"></i> Aperiam accusamus vel eunec detracto appellantur
-                    </li>
-                    <li>
-                        <i class="fa fa-check"></i> Nam albucius ponderum rationibu nec detracto appellantur
-                    </li>
-                </ul>
-
-                <h4>This is headline</h4>
-                <br>
+                <div>
+                 {!! $promotion->content !!}
+                </div>
 
             </div>
 
@@ -75,15 +47,13 @@
                     <div class="widget">
                         <h4>Các chương trình KM khác</h4>
                         <ul>
+                            @forelse ($promotions as $item)
                             <li>
-                                <a href="">Ne nec detracto appellantur <i class="fa fa-angle-right"></i></a>
+                                <a href="{{route('detail-promotion',$item->id)}}">{{$item->title}} <i class="fa fa-angle-right"></i></a>
                             </li>
-                            <li>
-                                <a href="">Aperiam accusamus vel eu <i class="fa fa-angle-right"></i></a>
-                            </li>
-                            <li>
-                                <a href="">Nam albucius ponderum rationibu <i class="fa fa-angle-right"></i></a>
-                            </li>
+                            @empty
+                                <p>Không có khuyến mãi</p>
+                            @endforelse
                         </ul>
                     </div>
                 </div>

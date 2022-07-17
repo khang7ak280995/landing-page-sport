@@ -2169,6 +2169,14 @@ ul.socialicons li i {
 .masonrycontainer2 img {
   margin-bottom: 10px;
   width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.detail_promotion img{
+  margin-bottom: 10px;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 .masonrycontainer2 .masonrys {
   margin: 0 0 54px 0;
