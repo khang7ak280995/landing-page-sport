@@ -1,15 +1,15 @@
 @extends('admin.layout.default')
 
-@section('title', 'Danh sach Slide home')
+@section('title', 'Danh sách gói BH')
 
 @section('content')
 
     <div class="pagetitle">
-        <h1>Slide Home</h1>
+        <h1>{{ \App\Helpers\Constant::TEXT_CONVERT[\App\Helpers\Constant::IMPRESSIVE_NUMBER] }}</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Slide Home</li>
+                <li class="breadcrumb-item active">Impressive Number</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -21,16 +21,16 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Custom Styled Validation</h5>
+                        <h5 class="card-title">Impressive Number</h5>
 
-                        <table class="table-index display" id="table">
+                        <table class="display  table-index" id="table">
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="text-center">Title</th>
-                                <th class="text-center">Description</th>
-                                <th class="text-center">Image</th>
-                                <th class="text-center">Show</th>
+                                <th class="text-center">Tiêu đề</th>
+                                <th class="text-center">Tiêu đề phụ</th>
+                                <th class="text-center">Icon</th>
+                                <th class="text-center">Hiển thị</th>
                                 <th class="text-center">Action</th>
                             </tr>
                             </thead>
@@ -48,7 +48,7 @@
             $('#table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('cms.'.\App\Helpers\Constant::SLIDE_HOME.'.getDataTable') !!}',
+                ajax: '{!! route('cms.'.\App\Helpers\Constant::IMPRESSIVE_NUMBER.'.getDataTable') !!}',
                 scrollX: true,
                 columns: [
                     {
@@ -58,14 +58,13 @@
                         searchable: false,
                         className: "text-center"
                     },
-                    {data: 'title', name: 'name', orderable: false, searchable: false},
-                    {data: 'description', name: 'email', orderable: false, searchable: false},
-                    {data: 'link_image', name: 'link_image', orderable: false, searchable: false},
-                    {data: 'is_show', name: 'is_show', orderable: false, searchable: false, className: "text-center"},
+                    {data: 'title', name: 'title', orderable: false, searchable: false},
+                    {data: 'sub_title', name: 'sub_title', orderable: false, searchable: false},
+                    {data: 'icon', name: 'icon', orderable: false, searchable: false, className: "text-center"},
+                    {data: 'is_show', name: 'is_show', orderable: false, searchable: false},
                     {
                         data: 'action',
                         name: 'action',
-                        className: "d-flex justify-content-around",
                         orderable: false,
                         searchable: false
                     }

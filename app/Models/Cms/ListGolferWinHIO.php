@@ -20,6 +20,7 @@ class ListGolferWinHIO extends BaseModel
         'facility',
         'hdc',
         'is_show',
-        'link_image'
+        'link_image',
+        'description'
     ];
 }

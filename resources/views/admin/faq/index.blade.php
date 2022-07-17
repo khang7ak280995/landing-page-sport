@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="pagetitle">
-        <h1>Slide Home</h1>
+        <h1>FAQ</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Table FAQ</h5>
 
-                        <table class="table-index" id="table">
+                        <table class="display table-index" id="table">
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
