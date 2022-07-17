@@ -57,6 +57,8 @@
 <script src="{{ asset('admin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/php-email-form/validate.js') }}"></script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('admin/package/ckfinder/ckfinder.js')}}"></script>
+<script src="{{asset('admin/package/ckeditor/ckeditor.js') }}"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('admin/assets/js/main.js') }}"></script>
