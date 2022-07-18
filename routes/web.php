@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [\App\Http\Controllers\Webpage\HomeController::class, 'index'])->name('index');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'homePage'])->name('home');
 Route::get('/products', function () {
     return view('frontend.pages.product');
@@ -23,7 +24,7 @@ Route::get('/detail-hio', function () {
     return view('frontend.pages.hio.detail-hio');
 });
 Route::get('/promotions', [\App\Http\Controllers\Webpage\PromotionController::class, 'index'])->name('promotions');
-Route::get('/detail-promotion/{id}', [\App\Http\Controllers\Webpage\PromotionController::class, 'view'])->name('detail-promotion');
+Route::get('/detail-promotion/{slug?}', [\App\Http\Controllers\Webpage\PromotionController::class, 'view'])->name('detail-promotion');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

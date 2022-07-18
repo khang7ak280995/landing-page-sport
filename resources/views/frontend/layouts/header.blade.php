@@ -4,11 +4,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <a href=""><i class="fa fa-twitter"></i></a>
-                        <a href=""><i class="fa fa-facebook"></i></a>
-                        <a href=""><i class="fa fa-linkedin"></i></a>
-                        <a href="skype:...?call"><i class="fa fa-phone"> <span>033 25 11111</span></i></a>
-                        <a href="mailto:someone@yoursite.com"><i class="fa fa-envelope last"> <span> contact@vgssport.com</span></i></a>
+                        <a href="{{isset($contact['twitter']) ? $contact['twitter'] : ""}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="{{isset($contact['facebook']) ? $contact['facebook'] : ""}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="{{isset($contact['linkedin']) ? $contact['linkedin'] : ""}}" target="_blank"><i class="fa fa-linkedin" ></i></a>
+                        <a href="skype:...?call"><i class="fa fa-phone"> <span>{{ isset($contact['phone']) ? $contact['phone'] : "" }}</span></i></a>
+                        <a href="mailto:someone@yoursite.com"><i class="fa fa-envelope last"> <span>{{ isset($contact['email']) ? $contact['email'] : "" }}</span></i></a>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="responsive-wrapper">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="{{route('home')}}">
                                 <img src="{{asset('frontend/images/logo.svg')}}">
                             </a>
                             <div class="navbar-header">
@@ -36,7 +36,7 @@
                                 <ul class="nav navbar-nav pull-right">
                                     <li><a href="{{ route('home') }}">Trang chủ</a></li>
                                     <li><a href="{{ route('insurance-package.detail') }}">Gói sản phẩm</a></li>
-                                    <li><a href="">Khuyến mại</a></li>
+                                    <li><a href="{{route('promotions')}}">Khuyến mại</a></li>
 {{--                                    <li><a href="">Con số ấn tượng</a></li>--}}
                                     <li><a href="{{ route(\App\Helpers\Constant::LIST_GOLFER_WIN_HIO . '.home') }}">Golfer trúng HIO</a></li>
                                     <li><a href="">Đăng ký đại lý</a></li>

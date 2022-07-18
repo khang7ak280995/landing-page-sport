@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Cms\ConfigRequest;
 use App\Models\Settings\ConfigModel;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -33,7 +34,7 @@ class ConfigController extends Controller
         return view('admin.config-info.index',compact('configs'));
     }
 
-    public function store(Request  $request)
+    public function store(ConfigRequest  $request)
     {
         ConfigModel::updateOrCreate(['id' => $request->property_id],
             ['title' => $request->title, 'type' => 'config','content' => $request['content']]);
@@ -60,7 +61,7 @@ class ConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request)
+    public function update(ConfigRequest $request)
     {
         //
         $config = ConfigModel::find($request->id);

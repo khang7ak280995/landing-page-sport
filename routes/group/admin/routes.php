@@ -102,6 +102,7 @@ Route::group([
         Route::post('store', [\App\Http\Controllers\Cms\PromotionController::class, 'store'])->name('store');
         Route::post('update/{id}', [\App\Http\Controllers\Cms\PromotionController::class, 'update'])->name('update');
         Route::POST('delete/{id}', [\App\Http\Controllers\Cms\PromotionController::class, 'delete'])->name('delete');
+        Route::get('change-show/{id}', [\App\Http\Controllers\Cms\PromotionController::class, 'changeShow'])->name('change-show');
     });
 
     Route::group([

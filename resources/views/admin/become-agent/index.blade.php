@@ -31,11 +31,11 @@
                 <h2 class="h2 text-center">Danh sách ưu đãi khi thành đại lý</h2>
 
             </div>
-            <div>
+            <div style="padding-left: 10px">
                 <button type="button" class="btn btn-info" href="" id="createNewProperty" data-toggle="modal" data-target="#ajaxModel"> Thêm ưu đãi +</button>
             </div>
             <br>
-            <table class="display table-bordered w-100 responsive" id="configTable">
+            <table class="display table-index" id="configTable">
                 <thead>
                 <tr class="text-center">
                     <th>STT</th>

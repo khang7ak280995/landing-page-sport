@@ -25,19 +25,18 @@ class CustomerRegisterInsuranceRequest extends FormRequest
     {
         return [
             //
-            'title' => 'required|min:10|max:191',
-            'description' => 'required|min:10|max:191',
-            'content' => 'required|min:10'
+            'name' => 'required|max:191',
+            'vga_code' => 'required|min:1|max:191',
+            'package_buy' => 'required'
         ];
     }
 
     public function messages()
     {
         return[
-            'title.required'=>'Title là bắt buộc',
-            'title.min'=>'Title toi thieu 10 ki tu',
-            'description.required'=>'Description là bắt buộc',
-            'content.required'=>'Content là bắt buộc',
+            'name.required'=>'name là bắt buộc',
+            'vga_code.required'=>'Ma vga là bắt buộc',
+            'package_buy.required'=>'Goi mua là bắt buộc',
         ];
     }
 }

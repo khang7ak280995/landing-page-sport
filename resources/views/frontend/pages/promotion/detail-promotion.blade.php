@@ -49,7 +49,7 @@
                         <ul>
                             @forelse ($promotions as $item)
                             <li>
-                                <a href="{{route('detail-promotion',$item->id)}}">{{$item->title}} <i class="fa fa-angle-right"></i></a>
+                                <a href="{{route('detail-promotion',$item->slug)}}">{{$item->title}} <i class="fa fa-angle-right"></i></a>
                             </li>
                             @empty
                                 <p>Không có khuyến mãi</p>

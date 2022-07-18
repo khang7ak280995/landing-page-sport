@@ -15,6 +15,7 @@ class PromotionModel extends BaseModel
         'content',
         'image',
         "status",
-        'description'
+        'description',
+        'slug'
     ];
 }

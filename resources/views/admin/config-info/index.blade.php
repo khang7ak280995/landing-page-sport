@@ -26,15 +26,15 @@
         @endif
         <div class="card">
 
-            <div class="col-lg-12">
+            <div class="col-lg-12" >
                 <h2 class="h2 text-center">Danh sách thông tin config</h2>
 
             </div>
-            <div class="pl-3">
+            <div class="pl-3" style="padding-left: 10px">
                 <button type="button" class="btn btn-info" href="" id="createNewProperty" data-toggle="modal" data-target="#ajaxModel"> Tạo config+</button>
             </div>
             <br>
-            <table class="display table-bordered w-100 responsive" id="configTable">
+            <table class="display table-index" id="configTable">
                 <thead>
                 <tr class="text-center">
                     <th>STT</th>
